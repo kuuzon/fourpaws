@@ -19,7 +19,7 @@
 
           // (ii) Invalid Email AND Password
           } else if ($_GET['error'] == "invalidmailuid") {
-            $errorMsg = "Invalid email and Password";
+            $errorMsg = "Invalid email and password";
 
           // (iii) Invalid Email
           } else if ($_GET['error'] == "invalidmail") {
@@ -28,6 +28,10 @@
           // (iv) Invalid Username
           } else if ($_GET['error'] == "invaliduid") {
             $errorMsg = "Invalid username";
+
+          // (iv) Invalid Username
+          } else if ($_GET['error'] == "invalidpassword") {
+            $errorMsg = "Invalid password";
 
           // (v) Password Confirmation Error
           } else if ($_GET['error'] == "passwordcheck") {

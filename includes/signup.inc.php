@@ -10,12 +10,15 @@
     $email = $_POST['mail'];
     $password = $_POST['pwd'];
     $passwordRepeat = $_POST['pwd-repeat'];
+
+    // Strong password REGEX
+    $pwdReg = "/^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/";
     
     // 4. VALIDATION: 
     // (i) Check if any fields are empty
     if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
       // If EMPTY - REDIRECT user back to the signup page (pass back error + username & email)
-      header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
+      header("Location: ../signup.php?error=emptyfields&uid=" . $username . "&mail=" . $email);
       exit(); 
     
     // (ii) Check for BOTH invalid email AND password syntax (uses A to Z & 0 to 9) 
@@ -27,19 +30,24 @@
     // (iii) Checks JUST if the email is invalid ONLY
     } else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       // if invalid email - REDIRECT user back to the signup page (pass back error + username)
-      header("Location: ../signup.php?error=invalidmail&uid=".$username);
+      header("Location: ../signup.php?error=invalidmail&uid=" . $username);
       exit(); 
 
     // (iv) Checks JUST if the username is invalid ONLY
     } else if(!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
       // If username invalid - REDIRECT user back to the signup page (pass back error + email)
-      header("Location: ../signup.php?error=invaliduid&mail=".$email);
+      header("Location: ../signup.php?error=invaliduid&mail=" . $email);
       exit();
+
+    // (NEW) Check for password integrity
+    } else if(!preg_match($pwdReg, $password)){
+      header("Location: ../signup.php?error=invalidpassword&uid=" . $username . "&mail=" . $email);
+      exit(); 
 
     // (v) Checks if password has NOT been confirmed correctly
     } else if($password !== $passwordRepeat){
       // No match - REDIRECT user back to the signup page (pass back error + username & email)
-      header("Location: ../signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
+      header("Location: ../signup.php?error=passwordcheck&uid=" . $username . "&mail=" . $email);
       exit();  
 
 
@@ -72,7 +80,7 @@
         $resultCheck = mysqli_stmt_num_rows($statement);
         // ERROR: If User Exists - pass back error
         if($resultCheck > 0){
-          header("Location: ../signup.php?error=usertaken&mail".$email); 
+          header("Location: ../signup.php?error=usertaken&mail" . $email); 
           exit(); 
 
         // 6. SUCCESS: No user exists
