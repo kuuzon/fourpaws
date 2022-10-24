@@ -1,14 +1,17 @@
-#logo img {
-    width: 20%;
-    margin: 1rem 0 0 0;
+/* ROOT CSS VARIABLES */
+:root {
+    --primary: #ffffff;
+    --complementary: #111827;
+    --highlight: #374151;
+    --brand: #6366f1;
 }
 
+/* GENERAL CSS */
 h1 {
     margin-top: -1rem;
     font-weight: lighter;
-    color: #1A2B63;
+    color: var(--complementary);
 }
-
 h2 {
     font-weight: lighter;
     text-align: center;
@@ -18,36 +21,50 @@ h5 {
     font-weight: light;
 }
 
-h2 span {
+/* HEADER */
+#logo img {
+    width: 20%;
+    margin: 1rem 0 0 0;
+}
+h1 span {
     font-weight: bold;
-    color: #FE3745;
+    color: var(--brand);
 }
 
-/* unvisited link */
+/* FOOTER */
+.footer {
+    display: block;   
+}
+
+/* CONTAINER CSS */
+.container {
+    width: 70vw;
+}
+
+/* NAVBAR */
+/* Unvisited link */
  a:link {
-    color: #445EA0;
+    color: var(--complementary);
 }
-
-/* visited link */
+/* Visited link */
  a:visited {
-    color: #445EA0;
+    color: var(--highlight);
 }
-
-/* mouse over link */
+/* Mouseover link */
  a:hover {
-    color: #FF5B61;
+    color: var(--brand);
+}
+/* Selected link */
+ a:active {
+    color: var(--brand);
 }
 
-/* selected link */
- a:active {
-    color: #445EA0;
-}
+/* BUTTON: PRIMARY (OVERWRITES BOOTSTRAP) */
 .btn-primary {
     color: #fff !important;
     background-color: #FE3745;
     border-color: #FE3745;
 }
-
 .btn-primary:hover {
     color: #fff !important;
     background-color: #B7092B;
@@ -69,12 +86,34 @@ h2 span {
     border-color: #FE3745;
 }
 
+/* BUTTON: SECONDARY (OVERWRITES BOOTSTRAP) */
+.btn-secondary {
+    color: #fff !important;
+    background-color: #445EA0;
+    border-color: #445EA0;
+}
+.btn-secondary:hover {
+    color: #fff !important;
+    background-color: #1A2B63;
+    border-color: #1A2B63;
+}
+.btn-secondary:active {
+    color: #fff !important;
+    background-color: #445EA0;
+    border-color: #445EA0;
+}
+.btn-secondary:visited {
+    color: #fff !important;
+    background-color: #445EA0;
+    border-color: #445EA0;
+}
+
+/* BUTTON: DANGER (OVERWRITES BOOTSTRAP) */
 .btn-danger {
     color: #fff !important;
     background-color: #FE3745;
     border-color: #FE3745;
 }
-
 .btn-danger:hover {
     color: #fff !important;
     background-color: #B7092B;
@@ -96,28 +135,7 @@ h2 span {
     border-color: #FE3745;
 }
 
-.btn-secondary {
-    color: #fff !important;
-    background-color: #445EA0;
-    border-color: #445EA0;
-}
-
-.btn-secondary:hover {
-    color: #fff !important;
-    background-color: #1A2B63;
-    border-color: #1A2B63;
-}
-.btn-secondary:active {
-    color: #fff !important;
-    background-color: #445EA0;
-    border-color: #445EA0;
-}
-.btn-secondary:visited {
-    color: #fff !important;
-    background-color: #445EA0;
-    border-color: #445EA0;
-}
-
+/* POSTS PAGE */
 .post-image {
     height: 20rem;
     object-fit: cover;
