@@ -1,15 +1,13 @@
 <!-- HEADER.PHP -->
 <?php 
-  require "templates/header.php"
+  require "./templates/header.php"
 ?>
 
-  <main class="container p-4 bg-light mt-3" style="width: 1000px">
-    <!-- createpost.inc.php - Will process the data from this form-->
-    <form action="includes/createpost.inc.php" method="POST">
+  <main class="container p-4 bg-light mt-3">
+    <form action="./app/controllers/createpost.inc.php" method="POST">
       <h2>Create Post</h2>
 
       <!-- 8. DYNAMIC ERROR MESSAGE -->
-      <!-- NOTE: This will be SIMILAR but NOT the same as signup.php -->
       <?php
         // VALIDATION: Check that Error Message Type exists in GET superglobal
         if(isset($_GET['error'])){
@@ -17,15 +15,16 @@
           if($_GET['error'] == "emptyfields"){
             $errorMsg = "Please fill in all fields";
 
-          // (ii) Internal server error 
-          } else if ($_GET['error'] == "sqlerror") {
+          // (ii) Forbidden request
+          } else if ($_GET['error'] == "forbidden") {
+            $errorMsg = "Please submit the form correctly";
+
+          // (iii) 500 Internal server error (sql or server)
+          } else if ($_GET['error'] == "sqlerror" || $_GET['error'] == "servererror") {
             $errorMsg = "An internal server error has occurred - please try again later";
           }
-
-          // (iii) Dynamic Error Alert based on Variable Value 
+          // (iv) ERROR CATCH-ALL:
           echo '<div class="alert alert-danger" role="alert">' . $errorMsg . '</div>';
-
-          // (iv). SUCCESS MESSAGE: Post saved successfully to DB -> NOT on this page.  We redirect them to posts.php, so we will need to add it there LATER!
         }
       ?>
       
@@ -66,5 +65,5 @@
 
 <!-- FOOTER.PHP -->
 <?php 
-  require "templates/footer.php"
+  require "./templates/footer.php"
 ?>
