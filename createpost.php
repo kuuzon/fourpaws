@@ -4,7 +4,7 @@
 ?>
 
   <main class="container p-4 bg-light mt-3">
-    <form action="./app/controllers/createpost.inc.php" method="POST">
+    <form action="./app/controllers/createpost.inc.php" method="POST" enctype="multipart/form-data">
       <h2>Create Post</h2>
 
       <!-- 8. DYNAMIC ERROR MESSAGE -->
@@ -28,37 +28,47 @@
         }
       ?>
       
-      <!-- 1. TITLE -->
+      <!-- 1. NAME -->
       <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" name="title" placeholder="Title" value="">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name" value="">
       </div>  
 
-      <!-- 2. IMAGE URL -->
+      <!-- 2. BREED -->
       <div class="mb-3">
-        <label for="imageurl" class="form-label">Image URL</label>
-        <input type="text" class="form-control" name="imageurl" placeholder="Image URL" value="" >
+        <label for="breed" class="form-label">Breed</label>
+        <input type="text" class="form-control" name="breed" placeholder="Breed" value="">
+      </div>  
+
+      <!-- 3. GENDER -->
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" aria-label="Select gender" name="gender">
+          <option selected>Choose gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>  
+
+      <!-- 4. IMAGE URL [FILE UPLOAD] -->
+      <div class="mb-3">
+        <label for="imageFile" class="form-label">Image URL</label>
+        <input type="file" class="form-control" id="imageFile" name="imageFile">
       </div>
 
-      <!-- 3. COMMENT SECTION -->
+      <!-- 5. DESCRIPTION -->
       <div class="mb-3">
-        <label for="comment" class="form-label">Comment</label>
-        <textarea class="form-control" name="comment" rows="3" placeholder="Comment" ></textarea>
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" rows="3" placeholder="Description" ></textarea>
       </div>
 
-      <!-- 4. WEBSITE URL -->
+      <!-- 6. LOCATION -->
       <div class="mb-3">
-        <label for="websiteurl" class="form-label">Website URL</label>
-        <input type="text" class="form-control" name="websiteurl" placeholder="Website URL" value="" >
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" name="location" placeholder="Location" value="" >
       </div>
 
-      <!-- 5. WEBSITE TITLE -->
-      <div class="mb-3">
-        <label for="websitetitle" class="form-label">Website Title</label>
-        <input type="text" class="form-control" name="websitetitle" placeholder="Website Title" value="" >
-      </div>
-
-      <!-- 6. SUBMIT BUTTON -->
+      <!-- 7. SUBMIT BUTTON -->
       <button type="submit" name="post-submit" class="btn btn-primary w-100">Post</button>
     </form>
   </main>
