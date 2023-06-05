@@ -17,12 +17,11 @@
 
     // File upload path variables
     $fileUploadPath = str_replace('/', DIRECTORY_SEPARATOR, '../../public/uploads/posts');
-    $fileUploadName = $fileName;
-    // $fileUploadName = $_SESSION['userId'] . "_$fileName";
+    $fileUploadName = $_SESSION['userId'] . "_$fileName";
     $fileUploadUrl = $fileUploadPath . DIRECTORY_SEPARATOR . $fileUploadName;
 
     // File download path variables
-    $fileDownloadUrl = str_replace('/', DIRECTORY_SEPARATOR, '/public/uploads/posts/' . $fileUploadName);
+    $fileDownloadUrl = str_replace('/', DIRECTORY_SEPARATOR, './public/uploads/posts/' . $fileUploadName);
 
     // 2. FILE VALIDATION
     // (i) PHP File Error

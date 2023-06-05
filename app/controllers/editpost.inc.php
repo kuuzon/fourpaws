@@ -4,23 +4,24 @@
     require '../lib/connect.inc.php';
 
     // Form variables
+    // NOTE: Disabled image re-upload for timebeing
     $pid = $conn->real_escape_string($_GET['pid']); 
     $pid = intval($pid);
-    $title = $_POST['title'];
-    $imageURL = $_POST['imageurl'];
-    $comment = $_POST['comment'];
-    $websiteURL = $_POST['websiteurl'];
-    $websiteTitle = $_POST['websitetitle'];
+    $name = $_POST['name'];
+    $breed = $_POST['breed'];
+    $gender = $_POST['gender'];
+    $description = $_POST['description'];
+    $location = $_POST['location'];
 
     // VALIDATION: 
-    if (empty($pid) || empty($title) || empty($imageURL) || empty($comment) || empty($websiteURL) || empty($websiteTitle)) {
+    if (empty($name) || empty($breed) || empty($gender) || empty($description) || empty($location)) {
       header("Location: ../../editpost.php?pid=$pid&error=emptyfields");
       exit();
     }
 
     // UPDATE POST 
     // (a) Template SQL Check
-    $sql = "UPDATE posts SET title=?, imageurl=?, comment=?, websiteurl=?, websitetitle=? WHERE pid=?"; 
+    $sql = "UPDATE posts SET name=?, breed=?, gender=?, description=?, location=? WHERE pid=?"; 
     $statement = $conn->stmt_init();
     if(!$statement->prepare($sql)){
       header("Location: ../../editpost.php?pid=$pid&error=sqlerror"); 
@@ -28,7 +29,7 @@
     }
 
     // (b) Data Binding & Execution
-    $statement->bind_param("sssssi", $title, $imageURL, $comment, $websiteURL, $websiteTitle, $pid);
+    $statement->bind_param("sssssi", $name, $breed, $gender, $description, $location, $pid);
     $statement->execute();
     if($statement->error){
       header("Location: ../../editpost.php?pid=$pid&error=servererror");

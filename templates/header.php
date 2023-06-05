@@ -17,8 +17,8 @@
   <!-- Header: START -->
   <header class="container">
     <div id="logo" class="text-center">
-      <img src="./public/assets/rocket.svg" alt="rocket">
-      <h1>Rocket<span>POST<span></h1>
+      <img src="./public/assets/cat.png" alt="cat logo">
+      <h1>Four<span>PAWS<span></h1>
     </div>
 
     <ul class="nav justify-content-center">

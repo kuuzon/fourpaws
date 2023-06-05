@@ -13,7 +13,8 @@
 ?>
 
 <!-- FIX UP FEASTABLE/URBANFORK (re-do of URBANSPOON / ZOMATO)
-- Image uploader integrated into createpost form + signup
+- Image uploading in createpost refactoring
+- Image uploader for edit
 - Fix signup to allow for EITHER username or email
 - Allow for editing & deleting of user profiles
 - Create user dashboard

@@ -16,7 +16,7 @@
   
         // PRE-POPULATE POST 
         // (a) Template SQL Check
-        $sql = "SELECT title, imageurl ,comment, websiteurl, websitetitle FROM posts WHERE pid=?";
+        $sql = "SELECT name, breed, gender, imagename, imagepath, description, location FROM posts WHERE pid=?";
         $statement = $conn->stmt_init();
         if(!$statement->prepare($sql)){
           header("Location: ./editpost.php?pid=$pid&error=sqlerror"); 
@@ -55,37 +55,47 @@
         }
       ?>
 
-      <!-- 1. TITLE -->
+      <!-- 1. NAME -->
       <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $row['title'] ?>">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name" value="<?php echo $row['name'] ?>">
       </div>  
 
-      <!-- 2. IMAGE URL -->
+      <!-- 2. BREED -->
       <div class="mb-3">
-        <label for="imageurl" class="form-label">Image URL</label>
-        <input type="text" class="form-control" name="imageurl" placeholder="Image URL" value="<?php echo $row['imageurl'] ?>" >
+        <label for="breed" class="form-label">Breed</label>
+        <input type="text" class="form-control" name="breed" placeholder="Breed" value="<?php echo $row['breed'] ?>">
+      </div>  
+
+      <!-- 3. GENDER -->
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" aria-label="Select gender" name="gender">
+          <option selected>Choose gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>        
+
+      <!-- 4. IMAGE UPLOADER: Disabled until built -->
+      <div class="alert alert-info" role="alert">Image Uploader disabled until built</div>
+      <div class="text-center">
+        <img style="width:200px;" src="<?php echo $row['imagepath'] ?>" alt="<?php echo $row['name'] ?>">
       </div>
 
-      <!-- 3. COMMENT SECTION -->
+      <!-- 5. DESCRIPTION -->
       <div class="mb-3">
-        <label for="comment" class="form-label">Comment</label>
-        <textarea class="form-control" name="comment" rows="3" placeholder="Comment"><?php echo $row['comment'] ?></textarea>
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" rows="3" placeholder="Description"><?php echo $row['description'] ?></textarea>
       </div>
 
-      <!-- 4. WEBSITE URL -->
+      <!-- 6. LOCATION -->
       <div class="mb-3">
-        <label for="websiteurl" class="form-label">Website URL</label>
-        <input type="text" class="form-control" name="websiteurl" placeholder="Website URL" value="<?php echo $row['websiteurl'] ?>" >
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" name="location" placeholder="Location" value="<?php echo $row['location'] ?>">
       </div>
 
-      <!-- 5. WEBSITE TITLE -->
-      <div class="mb-3">
-        <label for="websitetitle" class="form-label">Website Title</label>
-        <input type="text" class="form-control" name="websitetitle" placeholder="Website Title" value="<?php echo $row['websitetitle'] ?>" >
-      </div>
-
-      <!-- 6. SUBMIT BUTTON -->
+      <!-- 7. SUBMIT BUTTON -->
       <button type="submit" name="edit-submit" class="btn btn-primary w-100">Edit</button>
     </form>
   </main>

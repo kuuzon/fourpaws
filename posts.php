@@ -7,7 +7,7 @@
     <?php
       // 1. QUERY DATABASE for ALL POSTS
       require './app/lib/connect.inc.php';
-      $sql = "SELECT pid, title, imageurl ,comment, websiteurl, websitetitle FROM posts";
+      $sql = "SELECT pid, name, breed, gender, imagename, imagepath, description, location FROM posts";
       $result = $conn->query($sql);
     ?>
 
@@ -50,11 +50,11 @@
           $output .= 
           '
             <div class="card border-0 mt-3" pid="' . $row['pid'] . '">
-              <img src="' . $row['imageurl'] . '" class="card-img-top post-image" alt="' . $row['title'] . '">
+              <img src="' . $row['imagepath'] . '" class="card-img-top post-image" alt="' . $row['name'] . '">
               <div class="card-body">
-                <h5 class="card-title">' . $row['title'] . '</h5>
-                <p class="card-text">' . $row['comment'] . '</p>
-                <a href="' . $row['websiteurl'] . '" class="btn btn-primary w-100" target="_blank">' . $row['websitetitle'] . '</a>';
+                <h5 class="card-title">' . $row['name'] . '</h5>
+                <p class="card-text">' . $row['description'] . '</p>
+                <a href="' . $row['imagepath'] . '" class="btn btn-primary w-100" target="_blank">' . $row['name'] . '</a>';
                 
                 // ADMIN FEATURES:
                 if(isset($_SESSION['userId'])){
