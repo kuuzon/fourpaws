@@ -1,2 +1,2 @@
 # feastable
- A mock restaurant aggregator CMS using vanilla PHP
+ A demo cat adoption service built using MAMP stack
