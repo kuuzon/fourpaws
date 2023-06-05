@@ -12,7 +12,7 @@
   }
 ?>
 
-<!-- FIX UP FEASTABLE/URBANFORK (re-do of URBANSPOON / ZOMATO)
+<!-- FIX UP FOUR PAWS (cat adoption service)
 - Image uploading in createpost refactoring
 - Image uploader for edit
 - Fix signup to allow for EITHER username or email
