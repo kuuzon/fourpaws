@@ -6,19 +6,15 @@
   <main class="container p-4 bg-light mt-3">
     <form action="./app/controllers/createpost.inc.php" method="POST" enctype="multipart/form-data">
       <h2>Create Post</h2>
-
-      <!-- 8. DYNAMIC ERROR MESSAGE -->
       <?php
         // VALIDATION: Check that Error Message Type exists in GET superglobal
         if(isset($_GET['error'])){
           // (i) Empty fields validation 
           if($_GET['error'] == "emptyfields"){
             $errorMsg = "Please fill in all fields";
-
           // (ii) Forbidden request
           } else if ($_GET['error'] == "forbidden") {
             $errorMsg = "Please submit the form correctly";
-
           // (iii) 500 Internal server error (sql or server)
           } else if ($_GET['error'] == "sqlerror" || $_GET['error'] == "servererror") {
             $errorMsg = "An internal server error has occurred - please try again later";
