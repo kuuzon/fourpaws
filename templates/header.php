@@ -78,11 +78,11 @@
               <button type="submit" class="btn btn-primary w-100" name="login-submit">Login</button>
             </div>
           </form>
+          <!-- LOGIN FORM: END -->
         </div>
       </div>
     </div>
   </div>
-  <!-- Login Modal: END -->
   <!-- Login Error Message: START -->
   <section class="container mt-3">
     <?php
@@ -100,7 +100,7 @@
         // (iv) Password does NOT match DB 
         } else if ($_GET['loginerror'] == "wrongpwd"){
           $errorMsg = "Incorrect credentials";
-        // (iii) loginerror=forbidden
+        // (v) loginerror=forbidden
         } else if($_GET['loginerror'] == "forbidden"){
           $errorMsg = "Please submit form correctly";
         }
@@ -112,4 +112,3 @@
       }
     ?>
   </section>
-  <!-- Login Error Message: END -->

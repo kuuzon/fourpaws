@@ -44,12 +44,10 @@
           // (i) Empty fields validation 
           if($_GET['error'] == "emptyfields"){
             $errorMsg = "Please fill in all fields";
-
           // (ii) Internal server error 
           } else if ($_GET['error'] == "sqlerror" || $_GET['error'] == "servererror") {
             $errorMsg = "An internal server error has occurred - please try again later";
           }
-
           // (iii) Dynamic Error Alert based on Variable Value 
           echo '<div class="alert alert-danger" role="alert">' . $errorMsg . '</div>';
         }

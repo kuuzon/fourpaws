@@ -97,7 +97,7 @@
       exit();
     }
 
-    // (vi) SUCCESS Post Submission
+    // (c) SUCCESS Post Submission
     header("Location: ../../posts.php?post=success"); 
     exit();
 

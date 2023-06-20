@@ -21,6 +21,25 @@
           }
           // (iv) ERROR CATCH-ALL:
           echo '<div class="alert alert-danger" role="alert">' . $errorMsg . '</div>';
+
+        // VALIDATION FOR UPLOADING:
+        } else if(isset($_GET['uploaderror'])){
+          // (i) PHP Error (you would write this out in full) 
+          if($_GET['uploaderror'] == "ini-size" || $_GET['uploaderror'] == "form-size" || $_GET['uploaderror'] == "partial" || $_GET['uploaderror'] == "no-file" || $_GET['uploaderror'] == "tmp-dir" || $_GET['uploaderror'] == "cant-write" || $_GET['uploaderror'] == "extension" ){
+            $errorMsg = "PHP upload error";
+          // (ii) Incorrect file extension
+          } else if ($_GET['uploaderror'] == "bad-ext") {
+            $errorMsg = "Incorrect file extension";
+          // (iii) Exceeds max file size
+          } else if ($_GET['uploaderror'] == "file-size") {
+            $errorMsg = "File exceeds max allowable size (2MB)";
+          // (iv) File Already Exists
+          } else if ($_GET['uploaderror'] == "file-exists") {
+            $errorMsg = "File has already been uploaded";
+          // (v) Failed upload
+          } else if ($_GET['uploaderror'] == "system-error") {
+            $errorMsg = "File has not uploaded correctly - please try again later";
+          }
         }
       ?>
       
